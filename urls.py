@@ -18,5 +18,5 @@ Including another URLconf
 from django.urls import path, include
 
 urlpatterns = [
-     path('empresa/', include('empresa.urls', namespace='empresa'))
+     path('empresa/', include('empresa.urls')),
 ]
