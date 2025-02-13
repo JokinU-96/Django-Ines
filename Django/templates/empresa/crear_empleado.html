@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear empleado</title>
+</head>
+<body>
+    <h1>Crear empleado</h1>
+<form method="Post" action="">
+    {% csrf_token %}
+    <label for="nombre">Nombre</label>
+    <input  type="text" id="nombre" name="nombre" required> <br>
+
+    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+    <input  type="date" id="fecha_nacimiento" name="fecha_nacimiento" required> <br>
+
+    <label for="antiguedad">Antiguedad</label>
+    <input  type="number" id="antiguedad" name="antiguedad" required> <br>
+
+    <label for="departamento">Departamento</label>
+    <select id="departamento" name="departamento_id">
+        {% for departamento in departamentos %}
+            <option value="{{ departamento.id }}">{{ departamento.nombre }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="habilidades">Habilidades: </label><br>
+        {% for habilidad in habilidades %}
+            <input type="checkbox" name="habilidades" value="{{ habilidad.id }}">{{ habilidad.nombre }}<br>
+        {% endfor %}
+    <button type="submit">Crear empleado nuevo</button>
+</form>
+</body>
+</html>
