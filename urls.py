@@ -20,10 +20,10 @@ from django.urls import path, include
 from empresa.views import ver_empleado, crear_empleado, eliminar_empleado
 
 urlpatterns = [
-     path('empresa/', include('empresa.urls'), name='empresa'),
+    path('empresa/', include('empresa.urls'), name='empresa'),
 
-     path('empleados/<int:empleado_id>', ver_empleado, name='ver_empleado'),
-     path('empleados/crear/', crear_empleado, name='crear_empleado'),
-path('empleados/eliminar/<int:empleado_id>', eliminar_empleado, name='eliminar_empleado'),
+    path('empleados/<int:empleado_id>', ver_empleado, name='ver_empleado'),
+    path('empleados/crear/', crear_empleado, name='crear_empleado'),
+    path('empleados/eliminar/<int:empleado_id>', eliminar_empleado, name='eliminar_empleado'),
 
 ]
