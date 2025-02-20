@@ -21,9 +21,12 @@
         {% for empleado in empleados %}
             <tr>
                 <td><a href="{% url 'ver_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
+                <td><a href="{% url 'editar_empleado' empleado.id %}">Editar</a></td>
+                <td><a href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <a href="{% url 'crear_empleado' %}">Crear</a>
 </body>
 </html>

@@ -33,3 +33,22 @@ def eliminar_empleado(request, empleado_id):
     empleado = Empleado.objects.get(id=empleado_id)
     empleado.delete()
     return redirect('listar_empleados')
+def editar_empleado(request, empleado_id):
+    empleado = Empleado.objects.get(id=empleado_id)
+
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        departamento_id = request.POST['departamento_id']
+        habilidades_ids = request.POST.getlist('habilidades')
+        departamento = Departamento.objects.get(id=departamento_id)
+        empleado.habilidades.set(habilidades_ids)
+        empleado.save()
+        return redirect('listar_empleados')
+
+    departamentos = Departamento.objects.all()
+    habilidades = Habilidad.objects.all()
+    return render(request, 'empresa/editar_empleado.html', {
+        empleado: empleado,
+        departamentos: departamentos,
+        habilidades: habilidades
+    })
