@@ -29,3 +29,7 @@ def crear_empleado(request):
     departamentos = Departamento.objects.all()
     habilidades = Habilidad.objects.all()
     return render(request, 'empresa/crear_empleado.html', {'departamentos':departamentos, 'habilidades':habilidades})
+def eliminar_empleado(request, empleado_id):
+    empleado = Empleado.objects.get(id=empleado_id)
+    empleado.delete()
+    return redirect('listar_empleados')
