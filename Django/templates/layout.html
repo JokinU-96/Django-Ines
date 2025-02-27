@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mi ERP</title>
 </head>
 <body>
 <h1>Mi ERP</h1>
 <ul>
     <li><a href="/">Portada</a></li>
-    <li><a href="/empresa/empleados">Empleados</a></li>
-    <li><a href="/empresa/departmento">Departamento</a></li>
+    <li><a href="{% url 'listar_empleados' %}">Empleados</a></li>
+    <li><a href="/">Departamento</a></li>
     <li><a href="/">Portada</a></li>
 </ul>
 {% block content %}{% endblock %}

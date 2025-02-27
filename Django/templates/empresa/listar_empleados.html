@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de empleados</title>
-    <style>
-        [table]{
-            border: solid black 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Lista de empleados</h1>
-    <table border = "1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for empleado in empleados %}
-            <tr>
-                <td><a href="{% url 'ver_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
-                <td><a href="{% url 'editar_empleado' empleado.id %}">Editar</a></td>
-                <td><a href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'crear_empleado' %}">Crear</a>
-</body>
-</html>
+{% extends 'layout.html' %}
+{%  block content %}
+<h1>Lista de empleados</h1>
+<table border = "1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for empleado in empleados %}
+        <tr>
+            <td><a href="{% url 'ver_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
+            <td><a href="{% url 'editar_empleado' empleado.id %}">Editar</a></td>
+            <td><a href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'crear_empleado' %}">Crear</a>
+{% endblock %}
