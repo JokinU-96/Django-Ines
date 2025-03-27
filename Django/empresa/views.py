@@ -1,5 +1,3 @@
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from autenticacion.utils import es_gerente
