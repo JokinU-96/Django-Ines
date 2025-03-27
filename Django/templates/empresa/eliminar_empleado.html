@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Empleados</title>
-</head>
+{% extends 'layout.html' %}
+{%  block content %}
 <h1>Lista de Empleados</h1>
 <table>
     <thead>
@@ -34,5 +30,4 @@ cover;" src="{{ empleado.imagen.url }}" alt="Imagen de {{ empleado.nombre }}"
     </tr>
     </tbody>
 </table>
-</body>
-</html>
+{% endblock %}

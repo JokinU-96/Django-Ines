@@ -24,5 +24,7 @@ class Empleado (models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     habilidades = models.ManyToManyField(Habilidad)
+    imagen = models.ImageField(upload_to="empleados/", null=True, blank=True)
+
     def __str__(self):
         return f"{self.nombre} ({self.antiguedad})"

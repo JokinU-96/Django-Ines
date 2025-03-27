@@ -1,21 +1,37 @@
 {% extends 'layout.html' %}
-{%  block content %}
-<h1>Lista de empleados</h1>
-<table border = "1">
-    <thead>
+{% block content %}
+    <h1>Lista de empleados</h1>
+    <table border="1">
+        <thead>
         <tr>
             <th>Nombre</th>
         </tr>
-    </thead>
-    <tbody>
-    {% for empleado in empleados %}
-        <tr>
-            <td><a href="{% url 'ver_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
-            <td><a href="{% url 'editar_empleado' empleado.id %}">Editar</a></td>
-            <td><a href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'crear_empleado' %}">Crear</a>
+        </thead>
+        <tbody>
+        {% for empleado in empleados %}
+            <tr>
+                <td><a href="{% url 'ver_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
+                <td><a href="{% url 'editar_empleado' empleado.id %}">Editar</a></td>
+                <td><a href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_empleado' %}">Crear</a>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if empleados.has_previous %}
+                <a href="?page=1"> << Primera</a>
+                <a href="?page=2"> >> {{ empleados.previous_page_number }} >> Anterior</a>
+            {% endif %}
+            <span class="current">
+                    Página {{ empleados.number }} de {{ empleados.paginator.num_pages }}
+            </span>
+            {% if empleados.has_next %}
+                <a href="?page={{ empleados.next_page_number }}">Siguiente</a>
+                <a href="?page={{ empleados.paginator.pages }}">Última</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}
